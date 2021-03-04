@@ -26,7 +26,7 @@ Inspired by [Heiswayi Nrird](https://github.com/heiswayi)'s [the-plain](https://
 
     ```sh
     # create a new Gatsby site using the-plain-gatsby starter
-    gatsby new my-blog https://github.com/wangonya/the-plain-gatsby
+    gatsby new my-blog https://github.com/jmsn/the-plain-gatsby-ts
     ```
 
 2.  **Start developing.**
