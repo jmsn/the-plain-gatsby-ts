@@ -5,29 +5,40 @@
   "version": "0.1.0",
   "author": "Kinyanjui Wangonya <kwangonya@gmail.com>",
   "dependencies": {
-    "gatsby": "^2.5.7",
-    "gatsby-image": "^2.1.0",
-    "gatsby-plugin-feed": "^2.2.1",
+    "gatsby": "^2.32.8",
+    "gatsby-image": "^2.11.0",
+    "gatsby-plugin-feed": "^2.13.1",
     "gatsby-plugin-manifest": "^2.1.1",
-    "gatsby-plugin-offline": "^2.1.1",
-    "gatsby-plugin-react-helmet": "^3.0.12",
-    "gatsby-plugin-sass": "^2.0.11",
-    "gatsby-plugin-sharp": "^2.0.37",
-    "gatsby-remark-prismjs": "^3.2.9",
-    "gatsby-source-filesystem": "^2.0.37",
-    "gatsby-transformer-remark": "^2.3.12",
-    "gatsby-transformer-sharp": "^2.1.19",
-    "node-sass": "^4.12.0",
-    "prismjs": "^1.16.0",
+    "gatsby-plugin-offline": "^3.10.2",
+    "gatsby-plugin-react-helmet": "^3.10.0",
+    "gatsby-plugin-sass": "^3.2.0",
+    "gatsby-plugin-sharp": "^2.14.3",
+    "gatsby-plugin-typescript": "^2.12.1",
+    "gatsby-remark-prismjs": "^3.13.0",
+    "gatsby-source-filesystem": "^2.11.1",
+    "gatsby-transformer-remark": "^2.16.1",
+    "gatsby-transformer-sharp": "^2.12.0",
+    "node-sass": "^5.0.0",
+    "prismjs": "^1.23.0",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-plugin-react": "^7.13.0",
-    "prettier": "^1.17.1"
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "@types/react-helmet": "^6.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
+    "eslint": "^7.21.0",
+    "eslint-plugin-react": "^7.22.0",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.2",
+    "vfile-message": "^2.0.4"
+  },
+  "resolutions": {
+    "@types/react": "^17.0.2"
   },
   "keywords": [
     "gatsby",
@@ -38,10 +49,11 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "type-check": "tsc --noEmit"
   },
   "repository": {
     "type": "git",

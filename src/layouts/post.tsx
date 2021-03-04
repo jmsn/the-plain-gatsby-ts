@@ -1,10 +1,23 @@
-import React from "react"
+import React, { FC } from "react"
 import { Link, graphql } from "gatsby"
-
-import DefaultLayout from "../layouts/default"
+import DefaultLayout from "./default"
 import SEO from "../components/seo"
+import { SiteMetadata } from ".."
 
-const PostTemplate = ({ data, pageContext }) => {
+interface PostProps {
+  data: {
+    markdownRemark: any
+    site: {
+      siteMetadata: SiteMetadata
+    }
+  }
+  pageContext: {
+    prev?: any
+    next?: any
+  }
+}
+
+const PostTemplate: FC<PostProps> = ({ data, pageContext }) => {
   const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark
   const { next, prev } = pageContext
@@ -32,7 +45,7 @@ const PostTemplate = ({ data, pageContext }) => {
           </Link>
         )}
         <span> &middot; </span>
-        <Link to="/" className="home" className="home" title="Back Home">
+        <Link to="/" className="home" title="Back Home">
           {" "}
           Home{" "}
         </Link>

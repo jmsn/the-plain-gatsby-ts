@@ -5,15 +5,18 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
+import React, { FC } from "react"
 import { StaticQuery, graphql } from "gatsby"
-
-import Header from ".././components/header"
-import Footer from ".././components/footer"
+import Header from "../components/header"
+import Footer from "../components/footer"
 import "../styles/styles.scss"
 
-const DefaultLayout = ({ children }) => (
+interface LayoutProps {
+  location?: Location
+  title?: string
+}
+
+const DefaultLayout: FC<LayoutProps> = ({ children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -34,9 +37,5 @@ const DefaultLayout = ({ children }) => (
     )}
   />
 )
-
-DefaultLayout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
 
 export default DefaultLayout
