@@ -1,9 +1,9 @@
 {
-  "name": "the-plain-gatsby-starter",
+  "name": "the-plain-gatsby-ts-starter",
   "private": true,
   "description": "A simple minimalist starter for your personal blog",
   "version": "0.1.0",
-  "author": "Kinyanjui Wangonya <kwangonya@gmail.com>",
+  "author": "Jameson Steiner <jameson.steiner@gmail.com>",
   "dependencies": {
     "gatsby": "^2.32.8",
     "gatsby-image": "^2.11.0",
@@ -58,9 +58,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wangonya/the-plain-gatsby"
+    "url": "https://github.com/jmsn/the-plain-gatsby-ts"
   },
   "bugs": {
-    "url": "https://github.com/wangonya/the-plain-gatsby/issues"
+    "url": "https://github.com/jmsn/the-plain-gatsby-ts/issues"
   }
 }

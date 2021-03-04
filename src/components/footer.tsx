@@ -13,7 +13,7 @@ const Footer: FC<FooterProps> = ({ siteTitle = '' }) => (
       <small>
         {` </>`} Powered by {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a> and{` `}
-        <a href="https://github.com/wangonya/the-plain-gatsby">
+        <a href="https://github.com/jmsn/the-plain-gatsby-ts">
           The Plain Gatsby starter
         </a>
       </small>
