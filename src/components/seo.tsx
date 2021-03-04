@@ -8,6 +8,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { SeoQuery } from "../../types/graphql-types"
 
 interface SeoProps {
   description?: string
@@ -17,9 +18,9 @@ interface SeoProps {
 }
 
 function SEO({ description = '', lang = 'en', meta = [], title }: SeoProps) {
-  const { site } = useStaticQuery(
+  const { site } = useStaticQuery<SeoQuery>(
     graphql`
-      query {
+      query Seo {
         site {
           siteMetadata {
             title
@@ -31,7 +32,9 @@ function SEO({ description = '', lang = 'en', meta = [], title }: SeoProps) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site?.siteMetadata?.description || ''
+  const author = site?.siteMetadata?.author || ''
+  const titleTemplate = site?.siteMetadata?.title || ''
 
   return (
     <Helmet
@@ -39,7 +42,7 @@ function SEO({ description = '', lang = 'en', meta = [], title }: SeoProps) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${titleTemplate}`}
       meta={[
         {
           name: `description`,
@@ -63,7 +66,7 @@ function SEO({ description = '', lang = 'en', meta = [], title }: SeoProps) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: author,
         },
         {
           name: `twitter:title`,

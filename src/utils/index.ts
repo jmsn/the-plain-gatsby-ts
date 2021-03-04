@@ -1,6 +1,6 @@
 // group items array based on the
 
-import { Edge } from "..";
+import { MarkdownRemarkEdge } from "../../types/graphql-types";
 
 // value returned by calling fn with the current iterated item
 export function groupBy(items: any, fn: any): any {
@@ -19,6 +19,6 @@ export function groupBy(items: any, fn: any): any {
 
 // get the Year of a specified date
 
-export function getDateYear({ node }: Edge): number {
-  return new Date(node.frontmatter.date).getFullYear();
+export function getDateYear({ node }: MarkdownRemarkEdge): number {
+  return new Date(node?.frontmatter?.date).getFullYear();
 }

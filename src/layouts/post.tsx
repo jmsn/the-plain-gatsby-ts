@@ -1,34 +1,27 @@
 import React, { FC } from "react"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, PageProps } from "gatsby"
 import DefaultLayout from "./default"
 import SEO from "../components/seo"
-import { SiteMetadata } from ".."
+import { MarkdownRemark, PostQuery } from "../../types/graphql-types"
 
-interface PostProps {
-  data: {
-    markdownRemark: any
-    site: {
-      siteMetadata: SiteMetadata
-    }
-  }
-  pageContext: {
-    prev?: any
-    next?: any
-  }
-}
+type PostContext = { prev?: MarkdownRemark; next?: MarkdownRemark }
+type PostProps = PageProps<PostQuery, PostContext>
 
-const PostTemplate: FC<PostProps> = ({ data, pageContext }) => {
-  const { markdownRemark } = data
-  const { frontmatter, html } = markdownRemark
-  const { next, prev } = pageContext
+const PostTemplate: FC<PostProps> = ({ data: { markdownRemark }, pageContext }) => {
+  const frontmatter = markdownRemark?.frontmatter;
+  const title = frontmatter?.title || '';
+  const date = frontmatter?.date || '';
+  const html = markdownRemark?.html || '';
+  const { next, prev } = pageContext;
+
   return (
     <DefaultLayout>
-      <SEO title={frontmatter.title} />
+      <SEO title={title} />
       <article>
         <div className="center">
-          <h1 className="title">{frontmatter.title}</h1>
+          <h1 className="title">{title}</h1>
           <span className="code">
-            <small>{frontmatter.date}</small>
+            <small>{date}</small>
           </span>
         </div>
         <div className="divider" />
@@ -38,8 +31,8 @@ const PostTemplate: FC<PostProps> = ({ data, pageContext }) => {
         {prev && (
           <Link
             className="prev"
-            to={prev.fields.slug}
-            title={prev.frontmatter.title}
+            to={prev?.fields?.slug || ""}
+            title={prev?.frontmatter?.title || ""}
           >
             &lt;&lt;
           </Link>
@@ -53,8 +46,8 @@ const PostTemplate: FC<PostProps> = ({ data, pageContext }) => {
         {next && (
           <Link
             className="next"
-            to={next.fields.slug}
-            title={next.frontmatter.title}
+            to={next?.fields?.slug || ""}
+            title={next?.frontmatter?.title || ""}
           >
             &gt;&gt;
           </Link>
@@ -67,7 +60,7 @@ const PostTemplate: FC<PostProps> = ({ data, pageContext }) => {
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query($slug: String!) {
+  query Post($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {

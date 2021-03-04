@@ -4,6 +4,7 @@
     "target": "esnext",
     "jsx": "preserve",
     "lib": ["dom", "esnext"],
+    "moduleResolution": "node",
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,

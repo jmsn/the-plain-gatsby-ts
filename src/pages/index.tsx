@@ -1,19 +1,17 @@
 import React, { FC } from "react"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, PageProps } from "gatsby"
 import DefaultLayout from "../layouts/default"
 import SEO from "../components/seo"
 import { groupBy, getDateYear } from "../utils"
-import { Edge, PageQuery } from ".."
+import { IndexQuery, MarkdownRemarkEdge } from "../../types/graphql-types"
 
-interface IndexPageProps {
-  data: PageQuery
-}
+type IndexProps = PageProps<IndexQuery>
 
-const IndexPage: FC<IndexPageProps> = ({ data }) => {
+const IndexPage: FC<IndexProps> = ({ data }) => {
   // all posts without dates are assumed to be drafts or pages
   // not to be added to postsList
   const posts = data.allMarkdownRemark.edges.filter(
-    p => p.node.frontmatter.date !== null
+    p => p?.node?.frontmatter?.date != null
   )
 
   const postsListContainer = groupBy(posts, getDateYear)
@@ -35,14 +33,14 @@ const IndexPage: FC<IndexPageProps> = ({ data }) => {
   )
 }
 
-function postsList(posts: Edge[]): JSX.Element[] {
+function postsList(posts: MarkdownRemarkEdge[]): JSX.Element[] {
   return posts.map(post => (
     <li key={post.node.id}>
       <div className="post-date code">
-        <small>{post.node.frontmatter.date}</small>
+        <small>{post?.node?.frontmatter?.date}</small>
       </div>
       <div className="title">
-        <Link to={post.node.fields.slug}>{post.node.frontmatter.title}</Link>
+        <Link to={post?.node?.fields?.slug || ''}>{post?.node?.frontmatter?.title || ''}</Link>
       </div>
     </li>
   ))
@@ -51,7 +49,7 @@ function postsList(posts: Edge[]): JSX.Element[] {
 export default IndexPage
 
 export const pageQuery = graphql`
-  query {
+  query Index {
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
