@@ -1,24 +1,29 @@
 // group items array based on the
 
-import { MarkdownRemarkEdge } from "../../types/graphql-types";
+import { MarkdownRemarkFrontmatter, Maybe } from "../../types/graphql-types";
+
+type PostMap<T> = { year: string; posts: T[] }
 
 // value returned by calling fn with the current iterated item
-export function groupBy(items: any, fn: any): any {
-  return Object.entries(
-    items.reduce(
-      (result: any, item: any) => ({
-        ...result,
-        [fn(item)]: [...(result[fn(item)] || []), item],
-      }),
-      {}
-    )
-  ).reduce((acc: any, curr) => {
+export function groupBy<T>(items: T[], fn: (item: T) => number): PostMap<T>[] {
+  const tmp = items.reduce(
+    (result: { [x: number]: T[] }, item: T) => ({
+      ...result,
+      [fn(item)]: [...(result[fn(item)] || []), item],
+    }),
+    {}
+  )
+
+  return Object.entries(tmp).reduce((acc: PostMap<T>[], curr) => {
     return [...acc, { year: curr[0], posts: curr[1] }]
   }, [])
 }
 
 // get the Year of a specified date
-
-export function getDateYear({ node }: MarkdownRemarkEdge): number {
-  return new Date(node?.frontmatter?.date).getFullYear();
+export function getDateYear<T extends {
+  node?: {
+    frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'date'>> 
+  },
+}>(obj: T): number {
+  return new Date(obj.node?.frontmatter?.date).getFullYear()
 }
