@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.com/jmsn/the-plain-gatsby-ts.svg?branch=main)](https://travis-ci.com/jmsn/the-plain-gatsby-ts)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3b21f1de-a449-4256-baa1-915718dbbd7a/deploy-status)](https://app.netlify.com/sites/the-plain-gatsby-ts/deploys)
+---
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
