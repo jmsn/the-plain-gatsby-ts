@@ -1,7 +1,7 @@
-import React, { FC } from "react"
-import { graphql, useStaticQuery, PageProps } from "gatsby"
-import Img, { FluidObject } from "gatsby-image"
-import { ImageQuery } from "../../types/graphql-types"
+import React, { FC } from 'react'
+import { graphql, useStaticQuery, PageProps } from 'gatsby'
+import Img, { FluidObject } from 'gatsby-image'
+import { ImageQuery } from '../../types/graphql-types'
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized

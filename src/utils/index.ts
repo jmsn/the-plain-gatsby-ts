@@ -1,6 +1,6 @@
 // group items array based on the
 
-import { MarkdownRemarkFrontmatter, Maybe } from "../../types/graphql-types"
+import { MarkdownRemarkFrontmatter, Maybe } from '../../types/graphql-types'
 
 type PostMap<T> = { year: string; posts: T[] }
 
@@ -23,7 +23,7 @@ export function groupBy<T>(items: T[], fn: (item: T) => number): PostMap<T>[] {
 export function getDateYear<
   T extends {
     node?: {
-      frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, "date">>
+      frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'date'>>
     }
   }
 >(obj: T): number {

@@ -1,9 +1,9 @@
-import React, { FC } from "react"
-import { Link, graphql, PageProps } from "gatsby"
-import DefaultLayout from "../layouts/default"
-import SEO from "../components/seo"
-import { groupBy, getDateYear } from "../utils"
-import { IndexQuery, MarkdownRemarkEdge } from "../../types/graphql-types"
+import React, { FC } from 'react'
+import { Link, graphql, PageProps } from 'gatsby'
+import DefaultLayout from '../layouts/default'
+import SEO from '../components/seo'
+import { groupBy, getDateYear } from '../utils'
+import { IndexQuery, MarkdownRemarkEdge } from '../../types/graphql-types'
 
 type IndexProps = PageProps<IndexQuery>
 
@@ -40,8 +40,8 @@ function postsList(posts: MarkdownRemarkEdge[]): JSX.Element[] {
         <small>{post?.node?.frontmatter?.date}</small>
       </div>
       <div className="title">
-        <Link to={post?.node?.fields?.slug || ""}>
-          {post?.node?.frontmatter?.title || ""}
+        <Link to={post?.node?.fields?.slug || ''}>
+          {post?.node?.frontmatter?.title || ''}
         </Link>
       </div>
     </li>

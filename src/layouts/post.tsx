@@ -1,8 +1,8 @@
-import React, { FC } from "react"
-import { Link, graphql, PageProps } from "gatsby"
-import DefaultLayout from "./default"
-import SEO from "../components/seo"
-import { MarkdownRemark, PostQuery } from "../../types/graphql-types"
+import React, { FC } from 'react'
+import { Link, graphql, PageProps } from 'gatsby'
+import DefaultLayout from './default'
+import SEO from '../components/seo'
+import { MarkdownRemark, PostQuery } from '../../types/graphql-types'
 
 type PostContext = { prev?: MarkdownRemark; next?: MarkdownRemark }
 type PostProps = PageProps<PostQuery, PostContext>
@@ -12,9 +12,9 @@ const PostTemplate: FC<PostProps> = ({
   pageContext,
 }) => {
   const frontmatter = markdownRemark?.frontmatter
-  const title = frontmatter?.title || ""
-  const date = frontmatter?.date || ""
-  const html = markdownRemark?.html || ""
+  const title = frontmatter?.title || ''
+  const date = frontmatter?.date || ''
+  const html = markdownRemark?.html || ''
   const { next, prev } = pageContext
 
   return (
@@ -34,23 +34,23 @@ const PostTemplate: FC<PostProps> = ({
         {prev && (
           <Link
             className="prev"
-            to={prev?.fields?.slug || ""}
-            title={prev?.frontmatter?.title || ""}
+            to={prev?.fields?.slug || ''}
+            title={prev?.frontmatter?.title || ''}
           >
             &lt;&lt;
           </Link>
         )}
         <span> &middot; </span>
         <Link to="/" className="home" title="Back Home">
-          {" "}
-          Home{" "}
+          {' '}
+          Home{' '}
         </Link>
         <span> &middot; </span>
         {next && (
           <Link
             className="next"
-            to={next?.fields?.slug || ""}
-            title={next?.frontmatter?.title || ""}
+            to={next?.fields?.slug || ''}
+            title={next?.frontmatter?.title || ''}
           >
             &gt;&gt;
           </Link>
