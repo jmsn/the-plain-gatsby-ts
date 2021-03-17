@@ -6,7 +6,7 @@ interface HeaderProps {
   avatar?: string
 }
 
-const Header: FC<HeaderProps> = ({ avatar = '' }) => (
+const Header: FC<HeaderProps> = ({ avatar = "" }) => (
   <header className="logo">
     <Location>
       {({ location }) => {

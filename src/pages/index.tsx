@@ -11,7 +11,7 @@ const IndexPage: FC<IndexProps> = ({ data }) => {
   // all posts without dates are assumed to be drafts or pages
   // not to be added to postsList
   const posts = data.allMarkdownRemark.edges.filter(
-    p => p?.node?.frontmatter?.date != null
+    (p) => p?.node?.frontmatter?.date != null
   )
 
   const postsListContainer = groupBy(posts, getDateYear)
@@ -34,13 +34,15 @@ const IndexPage: FC<IndexProps> = ({ data }) => {
 }
 
 function postsList(posts: MarkdownRemarkEdge[]): JSX.Element[] {
-  return posts.map(post => (
+  return posts.map((post) => (
     <li key={post.node.id}>
       <div className="post-date code">
         <small>{post?.node?.frontmatter?.date}</small>
       </div>
       <div className="title">
-        <Link to={post?.node?.fields?.slug || ''}>{post?.node?.frontmatter?.title || ''}</Link>
+        <Link to={post?.node?.fields?.slug || ""}>
+          {post?.node?.frontmatter?.title || ""}
+        </Link>
       </div>
     </li>
   ))

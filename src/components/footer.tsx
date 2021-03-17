@@ -1,10 +1,10 @@
 import React, { FC } from "react"
 
 interface FooterProps {
-  siteTitle?: string;
+  siteTitle?: string
 }
 
-const Footer: FC<FooterProps> = ({ siteTitle = '' }) => (
+const Footer: FC<FooterProps> = ({ siteTitle = "" }) => (
   <div className="footer">
     <span className="block">
       &copy; {new Date().getFullYear()} {siteTitle}

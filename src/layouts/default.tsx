@@ -31,8 +31,8 @@ const DefaultLayout: FC<LayoutProps> = ({ children }) => {
     `
   )
 
-  const avatar = site?.siteMetadata?.avatar || '';
-  const title = site?.siteMetadata?.title || '';
+  const avatar = site?.siteMetadata?.avatar || ""
+  const title = site?.siteMetadata?.title || ""
 
   return (
     <>

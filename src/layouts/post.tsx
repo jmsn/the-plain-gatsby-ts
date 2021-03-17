@@ -7,12 +7,15 @@ import { MarkdownRemark, PostQuery } from "../../types/graphql-types"
 type PostContext = { prev?: MarkdownRemark; next?: MarkdownRemark }
 type PostProps = PageProps<PostQuery, PostContext>
 
-const PostTemplate: FC<PostProps> = ({ data: { markdownRemark }, pageContext }) => {
-  const frontmatter = markdownRemark?.frontmatter;
-  const title = frontmatter?.title || '';
-  const date = frontmatter?.date || '';
-  const html = markdownRemark?.html || '';
-  const { next, prev } = pageContext;
+const PostTemplate: FC<PostProps> = ({
+  data: { markdownRemark },
+  pageContext,
+}) => {
+  const frontmatter = markdownRemark?.frontmatter
+  const title = frontmatter?.title || ""
+  const date = frontmatter?.date || ""
+  const html = markdownRemark?.html || ""
+  const { next, prev } = pageContext
 
   return (
     <DefaultLayout>

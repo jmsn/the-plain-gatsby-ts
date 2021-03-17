@@ -17,7 +17,7 @@ interface SeoProps {
   title: string
 }
 
-function SEO({ description = '', lang = 'en', meta = [], title }: SeoProps) {
+function SEO({ description = "", lang = "en", meta = [], title }: SeoProps) {
   const { site } = useStaticQuery<SeoQuery>(
     graphql`
       query Seo {
@@ -32,9 +32,9 @@ function SEO({ description = '', lang = 'en', meta = [], title }: SeoProps) {
     `
   )
 
-  const metaDescription = description || site?.siteMetadata?.description || ''
-  const author = site?.siteMetadata?.author || ''
-  const titleTemplate = site?.siteMetadata?.title || ''
+  const metaDescription = description || site?.siteMetadata?.description || ""
+  const author = site?.siteMetadata?.author || ""
+  const titleTemplate = site?.siteMetadata?.title || ""
 
   return (
     <Helmet
