@@ -1,10 +1,10 @@
-const path = require("path")
-const { createFilePath } = require("gatsby-source-filesystem")
+const path = require('path');
+const { createFilePath } = require('gatsby-source-filesystem');
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
-  const postTemplate = path.resolve(`src/layouts/post.tsx`)
+  const postTemplate = path.resolve(`src/layouts/post.tsx`);
 
   return graphql(`
     {
@@ -26,9 +26,9 @@ exports.createPages = ({ actions, graphql }) => {
     }
   `).then(result => {
     if (result.errors) {
-      return Promise.reject(result.errors)
+      return Promise.reject(result.errors);
     }
-    const posts = result.data.allMarkdownRemark.edges
+    const posts = result.data.allMarkdownRemark.edges;
     posts.forEach(({ node }, index) => {
       createPage({
         path: node.fields.slug,
@@ -38,20 +38,20 @@ exports.createPages = ({ actions, graphql }) => {
           prev: index === 0 ? null : posts[index - 1].node,
           next: index === posts.length - 1 ? null : posts[index + 1].node,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};
 
 // create the slugs programatically instead of specifying a path in the frontmatter
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    const slug = createFilePath({ node, getNode, basePath: `pages` });
     createNodeField({
       node,
       name: `slug`,
       value: slug,
-    })
+    });
   }
-}
+};
