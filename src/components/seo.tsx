@@ -5,16 +5,16 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
-import { SeoQuery } from "../../types/graphql-types"
+import React from 'react';
+import Helmet from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
+import { SeoQuery } from '../../types/graphql-types';
 
 interface SeoProps {
-  description?: string
-  lang?: string
-  meta?: []
-  title: string
+  description?: string;
+  lang?: string;
+  meta?: [];
+  title: string;
 }
 
 function SEO({ description = '', lang = 'en', meta = [], title }: SeoProps) {
@@ -29,12 +29,12 @@ function SEO({ description = '', lang = 'en', meta = [], title }: SeoProps) {
           }
         }
       }
-    `
-  )
+    `,
+  );
 
-  const metaDescription = description || site?.siteMetadata?.description || ''
-  const author = site?.siteMetadata?.author || ''
-  const titleTemplate = site?.siteMetadata?.title || ''
+  const metaDescription = description || site?.siteMetadata?.description || '';
+  const author = site?.siteMetadata?.author || '';
+  const titleTemplate = site?.siteMetadata?.title || '';
 
   return (
     <Helmet
@@ -78,7 +78,7 @@ function SEO({ description = '', lang = 'en', meta = [], title }: SeoProps) {
         },
       ].concat(meta || [])}
     />
-  )
+  );
 }
 
-export default SEO
+export default SEO;

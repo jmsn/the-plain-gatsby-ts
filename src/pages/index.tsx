@@ -1,18 +1,18 @@
-import React, { FC } from "react"
-import { Link, graphql, PageProps } from "gatsby"
-import DefaultLayout from "../layouts/default"
-import SEO from "../components/seo"
-import { groupBy, getDateYear } from "../utils"
-import { IndexQuery, MarkdownRemarkEdge } from "../../types/graphql-types"
+import React, { FC } from 'react';
+import { Link, graphql, PageProps } from 'gatsby';
+import DefaultLayout from '../layouts/default';
+import SEO from '../components/seo';
+import { groupBy, getDateYear } from '../utils';
+import { IndexQuery, MarkdownRemarkEdge } from '../../types/graphql-types';
 
-type IndexProps = PageProps<IndexQuery>
+type IndexProps = PageProps<IndexQuery>;
 
 const IndexPage: FC<IndexProps> = ({ data }) => {
   // all posts without dates are assumed to be drafts or pages
   // not to be added to postsList
   const posts = data.allMarkdownRemark.edges.filter(
-    p => p?.node?.frontmatter?.date != null
-  )
+    p => p?.node?.frontmatter?.date != null,
+  );
 
   const postsListContainer = groupBy(posts, getDateYear)
     .map(({ year, posts }: any, i: number) => (
@@ -21,7 +21,7 @@ const IndexPage: FC<IndexProps> = ({ data }) => {
         {postsList(posts)}
       </div>
     ))
-    .reverse()
+    .reverse();
 
   return (
     <DefaultLayout>
@@ -30,8 +30,8 @@ const IndexPage: FC<IndexProps> = ({ data }) => {
         <ul>{postsListContainer}</ul>
       </section>
     </DefaultLayout>
-  )
-}
+  );
+};
 
 function postsList(posts: MarkdownRemarkEdge[]): JSX.Element[] {
   return posts.map(post => (
@@ -40,13 +40,15 @@ function postsList(posts: MarkdownRemarkEdge[]): JSX.Element[] {
         <small>{post?.node?.frontmatter?.date}</small>
       </div>
       <div className="title">
-        <Link to={post?.node?.fields?.slug || ''}>{post?.node?.frontmatter?.title || ''}</Link>
+        <Link to={post?.node?.fields?.slug || ''}>
+          {post?.node?.frontmatter?.title || ''}
+        </Link>
       </div>
     </li>
-  ))
+  ));
 }
 
-export default IndexPage
+export default IndexPage;
 
 export const pageQuery = graphql`
   query Index {
@@ -65,4 +67,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

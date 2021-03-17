@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC } from 'react';
 
 interface FooterProps {
   siteTitle?: string;
@@ -19,6 +19,6 @@ const Footer: FC<FooterProps> = ({ siteTitle = '' }) => (
       </small>
     </span>
   </div>
-)
+);
 
-export default Footer
+export default Footer;
