@@ -28,7 +28,7 @@ const DefaultLayout: FC<LayoutProps> = ({ children }) => {
           }
         }
       }
-    `
+    `,
   );
 
   const avatar = site?.siteMetadata?.avatar || '';

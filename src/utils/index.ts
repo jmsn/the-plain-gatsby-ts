@@ -11,7 +11,7 @@ export function groupBy<T>(items: T[], fn: (item: T) => number): PostMap<T>[] {
       ...result,
       [fn(item)]: [...(result[fn(item)] || []), item],
     }),
-    {}
+    {},
   );
 
   return Object.entries(tmp).reduce((acc: PostMap<T>[], curr) => {

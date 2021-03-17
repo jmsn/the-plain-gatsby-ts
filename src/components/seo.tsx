@@ -29,7 +29,7 @@ function SEO({ description = '', lang = 'en', meta = [], title }: SeoProps) {
           }
         }
       }
-    `
+    `,
   );
 
   const metaDescription = description || site?.siteMetadata?.description || '';

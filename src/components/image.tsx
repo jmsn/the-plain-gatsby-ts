@@ -26,7 +26,7 @@ const Image: FC<PageProps> = () => {
           }
         }
       }
-    `
+    `,
   );
 
   return (
