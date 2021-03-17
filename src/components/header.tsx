@@ -1,9 +1,9 @@
-import { Link } from 'gatsby'
-import React, { FC } from 'react'
-import { Location } from '@reach/router'
+import { Link } from 'gatsby';
+import React, { FC } from 'react';
+import { Location } from '@reach/router';
 
 interface HeaderProps {
-  avatar?: string
+  avatar?: string;
 }
 
 const Header: FC<HeaderProps> = ({ avatar = '' }) => (
@@ -24,10 +24,10 @@ const Header: FC<HeaderProps> = ({ avatar = '' }) => (
             </Link>
             <span className="logo-prompt code">Back Home</span>
           </div>
-        )
+        );
       }}
     </Location>
   </header>
-)
+);
 
-export default Header
+export default Header;

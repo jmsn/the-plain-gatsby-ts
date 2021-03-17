@@ -1,21 +1,21 @@
-import React, { FC } from 'react'
-import { Link, graphql, PageProps } from 'gatsby'
-import DefaultLayout from './default'
-import SEO from '../components/seo'
-import { MarkdownRemark, PostQuery } from '../../types/graphql-types'
+import React, { FC } from 'react';
+import { Link, graphql, PageProps } from 'gatsby';
+import DefaultLayout from './default';
+import SEO from '../components/seo';
+import { MarkdownRemark, PostQuery } from '../../types/graphql-types';
 
-type PostContext = { prev?: MarkdownRemark; next?: MarkdownRemark }
-type PostProps = PageProps<PostQuery, PostContext>
+type PostContext = { prev?: MarkdownRemark; next?: MarkdownRemark };
+type PostProps = PageProps<PostQuery, PostContext>;
 
 const PostTemplate: FC<PostProps> = ({
   data: { markdownRemark },
   pageContext,
 }) => {
-  const frontmatter = markdownRemark?.frontmatter
-  const title = frontmatter?.title || ''
-  const date = frontmatter?.date || ''
-  const html = markdownRemark?.html || ''
-  const { next, prev } = pageContext
+  const frontmatter = markdownRemark?.frontmatter;
+  const title = frontmatter?.title || '';
+  const date = frontmatter?.date || '';
+  const html = markdownRemark?.html || '';
+  const { next, prev } = pageContext;
 
   return (
     <DefaultLayout>
@@ -57,10 +57,10 @@ const PostTemplate: FC<PostProps> = ({
         )}
       </div>
     </DefaultLayout>
-  )
-}
+  );
+};
 
-export default PostTemplate
+export default PostTemplate;
 
 export const pageQuery = graphql`
   query Post($slug: String!) {
@@ -72,4 +72,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
