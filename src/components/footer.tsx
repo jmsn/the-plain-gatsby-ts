@@ -1,7 +1,10 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, { FC } from "react"
 
-const Footer = ({ siteTitle }) => (
+interface FooterProps {
+  siteTitle?: string;
+}
+
+const Footer: FC<FooterProps> = ({ siteTitle = '' }) => (
   <div className="footer">
     <span className="block">
       &copy; {new Date().getFullYear()} {siteTitle}
@@ -17,13 +20,5 @@ const Footer = ({ siteTitle }) => (
     </span>
   </div>
 )
-
-Footer.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Footer.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Footer

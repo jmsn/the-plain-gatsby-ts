@@ -1,38 +1,28 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-
+import React, { FC } from "react"
+import { Link, graphql, PageProps } from "gatsby"
 import DefaultLayout from "../layouts/default"
-import Image from "../components/image"
 import SEO from "../components/seo"
-
 import { groupBy, getDateYear } from "../utils"
+import { IndexQuery, MarkdownRemarkEdge } from "../../types/graphql-types"
 
-const IndexPage = ({ data }) => {
+type IndexProps = PageProps<IndexQuery>
+
+const IndexPage: FC<IndexProps> = ({ data }) => {
   // all posts without dates are assumed to be drafts or pages
   // not to be added to postsList
   const posts = data.allMarkdownRemark.edges.filter(
-    p => p.node.frontmatter.date !== null
+    p => p?.node?.frontmatter?.date != null
   )
-  const postsList = posts =>
-    posts.map(post => (
-      <li key={post.node.id}>
-        <div className="post-date code">
-          <small>{post.node.frontmatter.date}</small>
-        </div>
-        <div className="title">
-          <Link to={post.node.fields.slug}>{post.node.frontmatter.title}</Link>
-        </div>
-      </li>
-    ))
 
   const postsListContainer = groupBy(posts, getDateYear)
-    .map(({ year, posts }, i) => (
+    .map(({ year, posts }: any, i: number) => (
       <div key={i}>
         <h4 className="code">{year}</h4>
         {postsList(posts)}
       </div>
     ))
     .reverse()
+
   return (
     <DefaultLayout>
       <SEO title="Home" />
@@ -43,10 +33,23 @@ const IndexPage = ({ data }) => {
   )
 }
 
+function postsList(posts: MarkdownRemarkEdge[]): JSX.Element[] {
+  return posts.map(post => (
+    <li key={post.node.id}>
+      <div className="post-date code">
+        <small>{post?.node?.frontmatter?.date}</small>
+      </div>
+      <div className="title">
+        <Link to={post?.node?.fields?.slug || ''}>{post?.node?.frontmatter?.title || ''}</Link>
+      </div>
+    </li>
+  ))
+}
+
 export default IndexPage
 
 export const pageQuery = graphql`
-  query {
+  query Index {
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
